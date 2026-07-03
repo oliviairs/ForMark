@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaksi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo-brand"><img src="logofm.png" alt="ForMark" class="logo-avatar"><span class="logo-name">ForMark</span></a>
+    <ul class="navlinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="katalog.html">Transaksi</a></li>
+      <li><a href="profil.html">Profil</a></li>
+    </ul>
+    <a class="navcta" href="login.html">Keluar</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<div class="device-page">
+  <div class="screen-label">Form pemesanan</div>
+  <div class="device">
+    <div class="device-bar"><span></span><span></span><span></span></div>
+    <div class="device-body">
+
+      <div class="order-pkg" id="paketTerpilih">
+        <div class="order-pkg-thumb">
+          <img id="paketImg" src="simple.jpg" alt="Paket terpilih" style="width:100%;height:100%;object-fit:cover;border-radius:3px;" onerror="this.style.display='none'">
+        </div>
+        <div>
+          <h4 id="paketNama">Simple Logo</h4>
+          <p>Paket dipilih dari katalog</p>
+          <div class="price" id="paketHarga">Rp200.000</div>
+        </div>
+        <a href="katalog.html" style="font-size:12px;color:var(--terracotta-dark);text-decoration:none;margin-left:auto;align-self:flex-start;">Ganti</a>
+      </div>
+
+      <form id="formTransaksi" novalidate>
+        <label class="field-label">Nama brand / usaha</label>
+        <input type="text" class="field-input" id="namaBrand" placeholder="Contoh: Kopi Senja">
+        <div class="field-error" id="errorNamaBrand">Nama brand wajib diisi.</div>
+
+        <label class="field-label">Kategori transaksi</label>
+        <select class="field-select" id="kategoriTransaksi">
+          <option value="">Pilih kategori</option>
+          <option value="logo-baru">Logo Baru</option>
+          <option value="redesign">Redesign Logo</option>
+          <option value="branding-kit">Branding Kit</option>
+        </select>
+        <div class="field-error" id="errorKategori">Kategori wajib dipilih.</div>
+
+        <label class="field-label">Deskripsi brand & kebutuhan logo</label>
+        <textarea class="field-textarea" id="deskripsiBrand" placeholder="Jelaskan jenis usaha, gaya logo yang diinginkan, warna favorit, dll"></textarea>
+        <div class="field-error" id="errorDeskripsi">Deskripsi wajib diisi.</div>
+
+        <label class="field-label">Upload referensi / moodboard (opsional)</label>
+        <div class="upload-box" id="uploadBox" onclick="document.getElementById('referenceInput').click()">Klik untuk upload referensi</div>
+        <input type="file" id="referenceInput" accept="image/*" style="display:none;" onchange="previewReference(this)">
+        <div id="previewContainer" style="display:none;margin-top:12px;">
+          <img id="previewImage" style="width:100%;border-radius:4px;border:1px solid var(--line);">
+          <div id="fileName" style="font-size:12px;color:var(--ink-soft);margin-top:6px;"></div>
+        </div>
+
+        <button type="submit" class="full-btn" style="margin-top:14px;">Simpan & lanjut ke pembayaran</button>
+        <div id="formSuccess" style="display:none;font-size:12px;color:var(--sage-dark);text-align:center;margin-bottom:8px;">✓ Pesanan disimpan, mengarahkan ke pembayaran...</div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<section id="daftar-transaksi" style="padding-top:48px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Riwayat transaksi</div>
+      <h2>Daftar transaksi saya</h2>
+    </div>
+    <div class="tx-table-wrap">
+      <table class="tx-table">
+        <thead>
+          <tr>
+            <th>Nama Transaksi</th>
+            <th>Jumlah</th>
+            <th>Kategori</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Logo Kopi Senja</td>
+            <td class="tx-amount">Rp600.000</td>
+            <td>Branding Kit</td>
+            <td><span class="badge badge-done">Selesai</span></td>
+          </tr>
+          <tr>
+            <td>Logo Toko Bunga Mawar</td>
+            <td class="tx-amount">Rp450.000</td>
+            <td>Logo + Variasi Warna</td>
+            <td><span class="badge badge-progress">Diproses</span></td>
+          </tr>
+          <tr>
+            <td>Redesign Logo Warkop Bahagia</td>
+            <td class="tx-amount">Rp200.000</td>
+            <td>Redesign Logo</td>
+            <td><span class="badge badge-wait">Menunggu pembayaran</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 ForMark. All rights reserved.</div>
+</footer>
+
+<script>
+// Isi paket dari katalog
+const paket = localStorage.getItem("paket") || "Simple Logo";
+const harga = localStorage.getItem("harga") || "Rp200.000";
+document.getElementById("paketNama").textContent = paket;
+document.getElementById("paketHarga").textContent = harga;
+
+// Ganti gambar thumbnail sesuai paket
+const paketImgMap = {
+  "Simple Logo": "simple.jpg",
+  "Logo + Variasi Warna": "color1.webp",
+  "Full Branding Kit": "kit.jpg"
+};
+document.getElementById("paketImg").src = paketImgMap[paket] || "simple.jpg";
+
+function previewReference(input){
+  if(input.files && input.files[0]){
+    const file = input.files[0];
+    document.getElementById("fileName").textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = function(e){
+      document.getElementById("previewImage").src = e.target.result;
+      document.getElementById("previewContainer").style.display = "block";
+      localStorage.setItem("referensiGambar", e.target.result);
+      localStorage.setItem("referensiNama", file.name);
+    }
+    reader.readAsDataURL(file);
+    document.getElementById("uploadBox").innerHTML = "✓ File berhasil dipilih (klik untuk ganti)";
+    document.getElementById("uploadBox").style.borderColor = "var(--sage)";
+    document.getElementById("uploadBox").style.color = "var(--sage-dark)";
+  }
+}
+
+// Validasi form
+document.getElementById("formTransaksi").addEventListener("submit", function(e){
+  e.preventDefault();
+  let valid = true;
+
+  const namaBrand = document.getElementById("namaBrand");
+  const errorNamaBrand = document.getElementById("errorNamaBrand");
+  if(namaBrand.value.trim() === ""){
+    namaBrand.classList.add("invalid"); errorNamaBrand.classList.add("visible"); valid = false;
+  } else {
+    namaBrand.classList.remove("invalid"); errorNamaBrand.classList.remove("visible");
+  }
+
+  const kategori = document.getElementById("kategoriTransaksi");
+  const errorKategori = document.getElementById("errorKategori");
+  if(kategori.value === ""){
+    kategori.classList.add("invalid"); errorKategori.classList.add("visible"); valid = false;
+  } else {
+    kategori.classList.remove("invalid"); errorKategori.classList.remove("visible");
+  }
+
+  const deskripsi = document.getElementById("deskripsiBrand");
+  const errorDeskripsi = document.getElementById("errorDeskripsi");
+  if(deskripsi.value.trim() === ""){
+    deskripsi.classList.add("invalid"); errorDeskripsi.classList.add("visible"); valid = false;
+  } else {
+    deskripsi.classList.remove("invalid"); errorDeskripsi.classList.remove("visible");
+  }
+
+  if(valid){
+    localStorage.setItem("deskripsi", deskripsi.value.trim());
+    document.getElementById("formSuccess").style.display = "block";
+    setTimeout(function(){ window.location.href = "pembayaran.html"; }, 900);
+  }
+});
+</script>
+
+</body>
+</html>

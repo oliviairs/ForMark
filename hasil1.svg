@@ -1,0 +1,7 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F3FAF6"/>
+  <circle cx="400" cy="260" r="90" fill="#3FA67D"/>
+  <path d="M360 260 L388 295 L450 220" stroke="#FFFFFF" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="410" font-family="Georgia, serif" font-size="42" font-weight="600" fill="#1F3A30" text-anchor="middle">Kopi Senja</text>
+  <text x="400" y="442" font-family="Arial, sans-serif" font-size="14" letter-spacing="3" fill="#5C7A6C" text-anchor="middle">EST. 2024</text>
+</svg>

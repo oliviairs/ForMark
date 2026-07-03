@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo-brand"><img src="logofm.png" alt="ForMark" class="logo-avatar"><span class="logo-name">ForMark</span></a>
+        <ul class="navlinks">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="katalog.html">Transaksi</a></li>
+      <li><a href="profil.html">Profil</a></li>
+    </ul>
+    <a class="navcta" href="login.html">Masuk</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<div class="device-page">
+  <div class="screen-label">Login</div>
+  <div class="device">
+    <div class="device-bar"><span></span><span></span><span></span></div>
+    <div class="device-body">
+      <div class="login-box">
+        <h3>Masuk ke akun</h3>
+        <p class="login-sub">Pesan logo brand impianmu</p>
+        <label class="field-label">Email</label>
+        <input class="field-input" type="text" id="input-email" placeholder="nama@email.com">
+        <div class="field-error" id="error-email">Email wajib diisi.</div>
+        <label class="field-label">Password</label>
+        <input class="field-input" type="password" id="input-password" placeholder="••••••••">
+        <div class="field-error" id="error-password">Password wajib diisi.</div>
+        <button class="full-btn" onclick="masuk()">Masuk</button>
+        <p class="switch-text">Belum punya akun? <a href="registrasi.html" style="color:var(--terracotta-dark);text-decoration:none;font-weight:600;">Daftar</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 ForMark. All rights reserved.</div>
+</footer>
+
+<script>
+function masuk() {
+  const email = document.getElementById("input-email");
+  const password = document.getElementById("input-password");
+  const errorEmail = document.getElementById("error-email");
+  const errorPassword = document.getElementById("error-password");
+  let valid = true;
+
+  if (email.value.trim() === "") {
+    email.classList.add("invalid");
+    errorEmail.classList.add("visible");
+    valid = false;
+  } else {
+    email.classList.remove("invalid");
+    errorEmail.classList.remove("visible");
+  }
+
+  if (password.value.trim() === "") {
+    password.classList.add("invalid");
+    errorPassword.classList.add("visible");
+    valid = false;
+  } else {
+    password.classList.remove("invalid");
+    errorPassword.classList.remove("visible");
+  }
+
+  if (!valid) return;
+
+  const emailValue = email.value.trim().toLowerCase();
+  const passwordValue = password.value;
+
+  if (emailValue === "desainer") {
+    window.location.href = "login-artist.html";
+    return;
+  }
+
+  const emailTersimpan = localStorage.getItem("email");
+  const passwordTersimpan = localStorage.getItem("password");
+
+  if (emailValue === emailTersimpan && passwordValue === passwordTersimpan) {
+    window.location.href = "index2.html";
+  } else {
+    alert("Email atau password salah.");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Katalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.katalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.katalog-card{
+  background:var(--card);border:1px solid var(--line);border-radius:6px;
+  overflow:hidden;transition:border-color .15s, box-shadow .15s;
+}
+.katalog-card:hover{border-color:var(--terracotta);box-shadow:0 4px 16px rgba(63,166,125,0.10);}
+.katalog-thumb{
+  aspect-ratio:4/3;overflow:hidden;background:var(--line);
+  display:flex;align-items:center;justify-content:center;
+}
+.katalog-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.katalog-thumb .fallback{font-size:12px;color:var(--ink-soft);}
+.katalog-body{padding:20px 20px 22px;}
+.katalog-slip{font-family:'Fraunces',serif;font-size:11px;color:var(--terracotta-dark);letter-spacing:1px;margin-bottom:8px;}
+.katalog-body h3{font-size:18px;margin-bottom:6px;}
+.katalog-desc{font-size:13px;color:var(--ink-soft);margin-bottom:14px;line-height:1.6;}
+.katalog-includes{list-style:none;padding:0;margin:0 0 16px;}
+.katalog-includes li{font-size:12px;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;}
+.katalog-includes li:last-child{border-bottom:none;}
+.katalog-includes li::before{content:'✓';color:var(--terracotta);font-weight:600;font-size:11px;}
+.katalog-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
+.katalog-price{font-family:'Fraunces',serif;font-size:20px;font-weight:600;}
+.katalog-price span{font-size:12px;color:var(--ink-soft);font-family:'Inter',sans-serif;font-weight:400;}
+.pilih-btn{
+  background:var(--terracotta);color:#fff;border:none;
+  padding:10px 18px;font-size:13px;border-radius:2px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-weight:500;
+  transition:background .15s;
+}
+.pilih-btn:hover{background:var(--terracotta-dark);}
+@media(max-width:760px){.katalog-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo-brand"><img src="logofm.png" alt="ForMark" class="logo-avatar"><span class="logo-name">ForMark</span></a>
+    <ul class="navlinks">
+      <li><a href="index2.html">Beranda</a></li>
+      <li><a href="katalog2.html" class="active">Transaksi</a></li>
+      <li><a href="profil2.html">Profil</a></li>
+    </ul>
+    <a class="navcta" href="login.html">Keluar</a>
+  </div>
+</nav>
+</header>
+
+<main>
+<section style="padding-top:56px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Katalog paket</div>
+      <h2>Pilih paket yang sesuai</h2>
+      <p>Setiap paket sudah termasuk satu kali preview konsep sebelum lanjut ke pengerjaan final. Estimasi pengerjaan 3–10 hari kerja.</p>
+    </div>
+
+    <div class="katalog-grid">
+
+      <div class="katalog-card">
+        <div class="katalog-thumb">
+          <img src="simple.jpg" alt="Simple Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="fallback" style="display:none;">paket-simple.jpg</div>
+        </div>
+        <div class="katalog-body">
+          <div class="katalog-slip">PAKET No. 01</div>
+          <h3>Simple Logo</h3>
+          <p class="katalog-desc">Logo dasar berbasis teks atau ikon sederhana. Cocok untuk brand baru yang butuh identitas visual bersih dan minimalis.</p>
+          <ul class="katalog-includes">
+            <li>1 konsep logo</li>
+            <li>1 kali revisi</li>
+            <li>File PNG resolusi tinggi</li>
+            <li>Estimasi 3–5 hari kerja</li>
+          </ul>
+          <div class="katalog-foot">
+            <div class="katalog-price">Rp200.000 <span>/ pesanan</span></div>
+            <button class="pilih-btn" onclick="pilihPaket('Simple Logo','Rp200.000')">Pilih →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="katalog-card">
+        <div class="katalog-thumb">
+          <img src="color1.webp" alt="Logo + Variasi Warna" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="fallback" style="display:none;">paket-variasi.jpg</div>
+        </div>
+        <div class="katalog-body">
+          <div class="katalog-slip">PAKET No. 02</div>
+          <h3>Logo + Variasi Warna</h3>
+          <p class="katalog-desc">Logo lengkap dengan beberapa varian warna dan format file siap pakai untuk berbagai kebutuhan branding.</p>
+          <ul class="katalog-includes">
+            <li>1 konsep logo + 3 variasi warna</li>
+            <li>2 kali revisi</li>
+            <li>File PNG + AI (vector)</li>
+            <li>Estimasi 5–7 hari kerja</li>
+          </ul>
+          <div class="katalog-foot">
+            <div class="katalog-price">Rp450.000 <span>/ pesanan</span></div>
+            <button class="pilih-btn" onclick="pilihPaket('Logo + Variasi Warna','Rp450.000')">Pilih →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="katalog-card">
+        <div class="katalog-thumb">
+          <img src="kit.jpg" alt="Full Branding Kit" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="fallback" style="display:none;">paket-branding.jpg</div>
+        </div>
+        <div class="katalog-body">
+          <div class="katalog-slip">PAKET No. 03</div>
+          <h3>Full Branding Kit</h3>
+          <p class="katalog-desc">Paket paling lengkap — logo, panduan penggunaan brand, dan mockup penerapan untuk tampil profesional di semua media.</p>
+          <ul class="katalog-includes">
+            <li>Logo + variasi warna + versi hitam putih</li>
+            <li>Brand guideline (warna, tipografi)</li>
+            <li>Mockup penerapan (kartu nama, dll)</li>
+            <li>3 kali revisi · File PNG + AI + PDF</li>
+            <li>Estimasi 7–10 hari kerja</li>
+          </ul>
+          <div class="katalog-foot">
+            <div class="katalog-price">Rp600.000 <span>/ pesanan</span></div>
+            <button class="pilih-btn" onclick="pilihPaket('Full Branding Kit','Rp600.000')">Pilih →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 ForMark. All rights reserved.</div>
+</footer>
+
+<script>
+function pilihPaket(nama, harga, fileHasil){
+  const sudahLogin = localStorage.getItem("email");
+
+  localStorage.setItem("paket", nama);
+  localStorage.setItem("harga", harga);
+  localStorage.setItem("hasil", fileHasil);
+
+  if(sudahLogin){
+    window.location.href = "form-pemesanan.html";
+  } else {
+    window.location.href = "login.html";
+  }
+}
+</script>
+
+</body>
+</html>
